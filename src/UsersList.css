@@ -5,7 +5,8 @@
     margin: 7px auto;
 }
 
-.usersList form input {
+.usersList form input,
+.usersList form select {
     width: 100%;
 }
 
