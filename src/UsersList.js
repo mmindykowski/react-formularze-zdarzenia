@@ -8,7 +8,7 @@ const UsersList = () => {
     usertype: "Admin",
   });
 
-  const [users, setUsers] = useState([])
+  const [users, setUsers] = useState([]);
 
   const handleInputChange = (e) => {
     const target = e.target;
@@ -17,11 +17,16 @@ const UsersList = () => {
       return { ...prevDataForm, [name]: target.value };
     });
   };
-  console.log(formData);
+
+  const setUser = (e) => {
+    e.preventDefault();
+    setUsers(users.concat({...formData, id: Date.now()}));
+  };
+
+  console.log(users);
   return (
     <div className="usersList">
-     
-      <form>
+      <form onSubmit={setUser}>
         <label htmlFor="username">User name</label>
         <input
           type="text"
