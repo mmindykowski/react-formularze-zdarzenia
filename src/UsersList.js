@@ -5,8 +5,10 @@ const UsersList = () => {
   const [formData, setFormData] = useState({
     username: "",
     email: "",
-    usertype: "",
+    usertype: "Admin",
   });
+
+  const [users, setUsers] = useState([])
 
   const handleInputChange = (e) => {
     const target = e.target;
@@ -18,9 +20,7 @@ const UsersList = () => {
   console.log(formData);
   return (
     <div className="usersList">
-      <h2>{formData.username}</h2>
-      <h2>{formData.email}</h2>
-      <h2>{formData.usertype}</h2>
+     
       <form>
         <label htmlFor="username">User name</label>
         <input
