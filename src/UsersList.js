@@ -56,7 +56,7 @@ const UsersList = () => {
       <div className="list">
         {users.map((user) => {
           return (
-            <div className="userItem">
+            <div className="userItem" key={user.id}>
               <p>{user.username}</p>
               <p>{user.email}</p>
               <p>{user.usertype}</p>
