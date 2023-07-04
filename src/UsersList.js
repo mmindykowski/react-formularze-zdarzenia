@@ -23,7 +23,11 @@ const UsersList = () => {
     setUsers(users.concat({ ...formData, id: Date.now() }));
   };
 
-  console.log(users);
+  const removeUser = (id) => {
+    const filteredUsers = users.filter((user) => user.id !== id);
+    setUsers(filteredUsers);
+  };
+
   return (
     <div className="usersList">
       <form onSubmit={setUser}>
@@ -56,7 +60,11 @@ const UsersList = () => {
       <div className="list">
         {users.map((user) => {
           return (
-            <div className="userItem" key={user.id}>
+            <div
+              className="userItem"
+              key={user.id}
+              onClick={() => removeUser(user.id)}
+            >
               <p>{user.username}</p>
               <p>{user.email}</p>
               <p>{user.usertype}</p>
