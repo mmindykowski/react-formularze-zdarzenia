@@ -20,7 +20,7 @@ const UsersList = () => {
 
   const setUser = (e) => {
     e.preventDefault();
-    setUsers(users.concat({...formData, id: Date.now()}));
+    setUsers(users.concat({ ...formData, id: Date.now() }));
   };
 
   console.log(users);
@@ -52,6 +52,18 @@ const UsersList = () => {
         </select>
         <button>Save</button>
       </form>
+
+      <div className="list">
+        {users.map((user) => {
+          return (
+            <div className="userItem">
+              <p>{user.username}</p>
+              <p>{user.email}</p>
+              <p>{user.usertype}</p>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };
