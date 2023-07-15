@@ -37,18 +37,17 @@ const UsersList = () => {
       usertype: "User",
     };
 
-    
-
     if (event.target.name === "show-users") {
-      filter = users.filter(user =>
+      filter = users.filter((user) =>
         Object.keys(filterQuery).every((key) => user[key] === filterQuery[key])
       );
-        
+
       // filter = users.filter((user) =>
       // user.usertype === filterQuery
     }
     console.log(users);
     console.log(filter);
+    setUsers(filter)
   };
 
   return (
