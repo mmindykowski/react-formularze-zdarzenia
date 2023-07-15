@@ -5,12 +5,12 @@ const UsersList = () => {
   const [formData, setFormData] = useState({
     username: "",
     email: "",
-    usertype: "Admin",
+    usertype: "",
   });
 
   const [users, setUsers] = useState([]);
 
-  const [filteredList, setfilteredList] = useState([]);
+  const [filteredList, setFilteredList] = useState([]);
 
   const handleInputChange = (e) => {
     const target = e.target;
@@ -30,16 +30,26 @@ const UsersList = () => {
     setUsers(filteredUsers);
   };
 
-  const filtering = (event) => {
+  const filteredData = (event) => {
+    let filter;
 
-    let filter
+    const filterQuery = {
+      usertype: "User",
+    };
 
-    if ( event.target.name === 'show-users') {
-      filter = users.filter()
+    
+
+    if (event.target.name === "show-users") {
+      filter = users.filter(user =>
+        Object.keys(filterQuery).every((key) => user[key] === filterQuery[key])
+      );
+        
+      // filter = users.filter((user) =>
+      // user.usertype === filterQuery
     }
-  }
-
-
+    console.log(users);
+    console.log(filter);
+  };
 
   return (
     <div className="usersList">
@@ -70,9 +80,15 @@ const UsersList = () => {
         <button>Save</button>
       </form>
       <div>
-        <button name="show-users" onClick={(event)=> filtering(event)}>Show users</button>
-        <button name="show-admins" onClick={(event)=> filtering(event)}>Show admins</button>
-        <button name="show-all" onClick={(event)=> filtering(event)}>Show all</button>
+        <button name="show-users" onClick={(event) => filteredData(event)}>
+          Show users
+        </button>
+        <button name="show-admins" onClick={(event) => filteredData(event)}>
+          Show admins
+        </button>
+        <button name="show-all" onClick={(event) => filteredData(event)}>
+          Show all
+        </button>
       </div>
       <div className="list">
         {users.map((user) => {
