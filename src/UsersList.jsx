@@ -5,7 +5,7 @@ const UsersList = () => {
   const [formData, setFormData] = useState({
     username: "",
     email: "",
-    usertype: "",
+    usertype: "Admin",
   });
 
   const [users, setUsers] = useState([]);
@@ -32,9 +32,14 @@ const UsersList = () => {
 
   const filteredData = (event) => {
     let filter;
+    let filter2;
 
     const filterQuery = {
       usertype: "User",
+    };
+
+    const filterQuery2 = {
+      usertype: "Admin",
     };
 
     if (event.target.name === "show-users") {
@@ -44,11 +49,25 @@ const UsersList = () => {
 
       // filter = users.filter((user) =>
       // user.usertype === filterQuery
-    }
-    console.log(users);
-    console.log(filter);
-    setUsers(filter)
+    } else if (event.target.name === "show-admins") {
+      filter2 = users.filter((user) =>
+        Object.keys(filterQuery2).every(
+          (key) => user[key] === filterQuery2[key]
+        )
+      );
+    } 
+    // else (event.target.name === "show-all"); {
+    //   setUsers();
+    // }
+
+    // console.log(users);
+    // console.log(filter2);
+    setUsers(filter);
+    // setUsers(filter2);
+    
   };
+
+
 
   return (
     <div className="usersList">
