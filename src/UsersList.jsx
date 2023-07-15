@@ -10,6 +10,8 @@ const UsersList = () => {
 
   const [users, setUsers] = useState([]);
 
+  const [filteredList, setfilteredList] = useState([]);
+
   const handleInputChange = (e) => {
     const target = e.target;
     const name = target.name;
@@ -27,6 +29,17 @@ const UsersList = () => {
     const filteredUsers = users.filter((user) => user.id !== id);
     setUsers(filteredUsers);
   };
+
+  const filtering = (event) => {
+
+    let filter
+
+    if ( event.target.name === 'show-users') {
+      filter = users.filter()
+    }
+  }
+
+
 
   return (
     <div className="usersList">
@@ -56,7 +69,11 @@ const UsersList = () => {
         </select>
         <button>Save</button>
       </form>
-
+      <div>
+        <button name="show-users" onClick={(event)=> filtering(event)}>Show users</button>
+        <button name="show-admins" onClick={(event)=> filtering(event)}>Show admins</button>
+        <button name="show-all" onClick={(event)=> filtering(event)}>Show all</button>
+      </div>
       <div className="list">
         {users.map((user) => {
           return (
