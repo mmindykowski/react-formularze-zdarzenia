@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./UsersList.css";
 
 const UsersList = () => {
@@ -46,28 +46,33 @@ const UsersList = () => {
       filter = users.filter((user) =>
         Object.keys(filterQuery).every((key) => user[key] === filterQuery[key])
       );
-
+      return setUsers(filter);
       // filter = users.filter((user) =>
       // user.usertype === filterQuery
-    } else if (event.target.name === "show-admins") {
+    }
+    if (event.target.name === "show-admins") {
       filter2 = users.filter((user) =>
         Object.keys(filterQuery2).every(
           (key) => user[key] === filterQuery2[key]
         )
       );
-    } 
-    // else (event.target.name === "show-all"); {
-    //   setUsers();
-    // }
+      return setUsers(filter2);
+    }
+    if (event.target.name === "show-all");
+    {
+      return setUsers;
+      console.log("dziala");
+    }
 
     // console.log(users);
     // console.log(filter2);
-    setUsers(filter);
+    // setUsers(filter);
     // setUsers(filter2);
-    
   };
 
-
+  useEffect(() => {
+    setFilteredList(users);
+  }, [users]);
 
   return (
     <div className="usersList">
