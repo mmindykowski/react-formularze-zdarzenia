@@ -32,38 +32,35 @@ const UsersList = () => {
 
   const filteredData = (event) => {
     let filter;
-    let filter2;
 
-    const filterQuery = {
-      usertype: "User",
-    };
+    // const filterQuery = {
+    //   usertype: "User",
+    // };
 
-    const filterQuery2 = {
-      usertype: "Admin",
-    };
+    // const filterQuery2 = {
+    //   usertype: "Admin",
+    // };
 
     if (event.target.name === "show-users") {
-      filter = users.filter((user) =>
-        Object.keys(filterQuery).every((key) => user[key] === filterQuery[key])
-      );
-      return setUsers(filter);
+      console.log(event.target.name);
+      filter = users.filter((user) => {
+        console.log(user.usertype);
+        return user.usertype === "User";
+        
+      });
+      
       // filter = users.filter((user) =>
       // user.usertype === filterQuery
-    }
-    if (event.target.name === "show-admins") {
-      filter2 = users.filter((user) =>
-        Object.keys(filterQuery2).every(
-          (key) => user[key] === filterQuery2[key]
-        )
-      );
-      return setUsers(filter2);
-    }
-    if (event.target.name === "show-all");
+    } else if (event.target.name === "show-admins") {
+      filter = users.filter((user) => {
+        return user.usertype === "Admin";
+      });
+    } else if (event.target.name === "show-all");
     {
-      return setUsers;
-      console.log("dziala");
+      filter = users;
     }
-
+    console.log(filter);
+    setFilteredList(filter);
     // console.log(users);
     // console.log(filter2);
     // setUsers(filter);
@@ -114,7 +111,7 @@ const UsersList = () => {
         </button>
       </div>
       <div className="list">
-        {users.map((user) => {
+        {filteredList.map((user) => {
           return (
             <div
               className="userItem"
