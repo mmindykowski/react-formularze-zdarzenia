@@ -45,20 +45,26 @@ const UsersList = () => {
       console.log(event.target.name);
       filter = users.filter((user) => {
         console.log(user.usertype);
-        return user.usertype === "User";
-        
+        return (user.usertype === "User");
       });
-      
+
       // filter = users.filter((user) =>
       // user.usertype === filterQuery
-    } else if (event.target.name === "show-admins") {
-      filter = users.filter((user) => {
-        return user.usertype === "Admin";
-      });
-    } else if (event.target.name === "show-all");
-    {
-      filter = users;
     }
+
+    if (event.target.name === "show-admins") {
+      filter = users.filter((user) => {
+        return (user.usertype === "Admin");
+      });
+    }
+
+    if (event.target.name === "show-all")
+    {
+      {
+        filter = users;
+      }
+    }
+
     console.log(filter);
     setFilteredList(filter);
     // console.log(users);
