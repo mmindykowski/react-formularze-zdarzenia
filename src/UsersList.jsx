@@ -33,33 +33,21 @@ const UsersList = () => {
   const filteredData = (event) => {
     let filter;
 
-    // const filterQuery = {
-    //   usertype: "User",
-    // };
-
-    // const filterQuery2 = {
-    //   usertype: "Admin",
-    // };
-
     if (event.target.name === "show-users") {
       console.log(event.target.name);
       filter = users.filter((user) => {
         console.log(user.usertype);
-        return (user.usertype === "User");
+        return user.usertype === "User";
       });
-
-      // filter = users.filter((user) =>
-      // user.usertype === filterQuery
     }
 
     if (event.target.name === "show-admins") {
       filter = users.filter((user) => {
-        return (user.usertype === "Admin");
+        return user.usertype === "Admin";
       });
     }
 
-    if (event.target.name === "show-all")
-    {
+    if (event.target.name === "show-all") {
       {
         filter = users;
       }
